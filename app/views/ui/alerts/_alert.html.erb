@@ -1,0 +1,18 @@
+<turbo-frame id="<%= dom_id(alert) %>">
+  <tr>
+    <td><span class="badge <%= alert.severity %>"><%= alert.severity.capitalize %></span></td>
+    <td><%= alert.reason %></td>
+    <td><%= alert.agent.name %></td>
+    <td><%= alert.event.host %></td>
+    <td>
+      <span class="badge status-<%= alert.status %>"><%= alert.status.capitalize %></span>
+    </td>
+    <td>
+      <% if alert.status == "open" %>
+        <%= button_to "Resolve", ui_alert_path(alert, status: "resolved"), method: :patch, form: { data: { turbo_frame: dom_id(alert) } }, class: "btn" %>
+      <% else %>
+        <%= button_to "Re-open", ui_alert_path(alert, status: "open"), method: :patch, form: { data: { turbo_frame: dom_id(alert) } }, class: "btn" %>
+      <% end %>
+    </td>
+  </tr>
+</turbo-frame>

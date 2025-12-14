@@ -1,0 +1,17 @@
+/.bundle
+/log/*
+/tmp/*
+/vendor/bundle
+/storage/*
+/config/master.key
+/config/credentials.yml.enc
+/coverage
+/.env*
+/.docker-compose.override.yml
+!/log/.keep
+!/tmp/.keep
+!/storage/.keep
+.byebug_history
+.DS_Store
+node_modules
+prd.md

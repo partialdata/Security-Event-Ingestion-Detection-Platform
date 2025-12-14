@@ -1,0 +1,56 @@
+<div class="cards" style="margin-bottom: 18px;">
+  <div class="card">
+    <div class="muted">Open Alerts</div>
+    <div style="font-size: 32px; font-weight: 700; margin-top: 6px;"><%= @open_count %></div>
+  </div>
+  <div class="card">
+    <div class="muted">Recent Events (10)</div>
+    <div style="margin-top: 8px;">
+      <ul style="list-style:none;padding:0;margin:0;">
+        <% @recent_events.each do |event| %>
+          <li style="padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span class="badge <%= event.event_type %>"><%= event.event_type %></span>
+            <span class="muted">Host:</span> <%= event.host %>
+            <span class="muted">Agent:</span> <%= event.agent.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="grid-2">
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <h3 style="margin:0;">Recent Alerts</h3>
+      <a href="<%= ui_alerts_path %>" class="btn">View all</a>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Severity</th>
+          <th>Reason</th>
+          <th>Agent</th>
+          <th>Host</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @recent_alerts.each do |alert| %>
+          <%= render partial: "ui/alerts/alert", locals: { alert: alert } %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;">How to use this demo</h3>
+    <ol style="padding-left:18px; color: var(--muted);">
+      <li>Seed agents: <code>docker compose run --rm web ./bin/rails db:seed</code></li>
+      <li>Send events to <code>POST /api/v1/events</code> using JWT from seeds.</li>
+      <li>Watch alerts arrive here; mark them resolved inline via Hotwire.</li>
+    </ol>
+    <p class="muted" style="margin-top:12px;">This UI is intentionally minimal: Turbo frames for inline status changes, no build step, API-first backend.</p>
+  </div>
+</div>

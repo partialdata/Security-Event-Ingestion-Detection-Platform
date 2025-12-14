@@ -1,0 +1,23 @@
+<div class="card">
+  <div style="display:flex;align-items:center;justify-content:space-between;">
+    <h2 style="margin:0;">All Alerts</h2>
+    <a href="<%= root_path %>" class="btn">Back to dashboard</a>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Severity</th>
+        <th>Reason</th>
+        <th>Agent</th>
+        <th>Host</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @alerts.each do |alert| %>
+        <%= render partial: "ui/alerts/alert", locals: { alert: alert } %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Security Event Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card: #111827;
+        --muted: #94a3b8;
+        --accent: #22d3ee;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --success: #34d399;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        background: radial-gradient(circle at 20% 20%, rgba(34,211,238,0.12), transparent 25%),
+                    radial-gradient(circle at 80% 10%, rgba(244,114,182,0.12), transparent 25%),
+                    var(--bg);
+        color: #e2e8f0;
+      }
+      header {
+        padding: 18px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(10px);
+        background: rgba(15,23,42,0.8);
+        z-index: 10;
+      }
+      header h1 { margin: 0; font-size: 18px; letter-spacing: 0.4px; }
+      .container { padding: 24px; max-width: 1200px; margin: 0 auto; }
+      .cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
+      .card {
+        background: var(--card);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+      }
+      .muted { color: var(--muted); font-size: 13px; }
+      table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+      th, td { padding: 10px 8px; text-align: left; }
+      th { color: var(--muted); font-weight: 600; font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
+      tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+      .badge { padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+      .badge.high { background: rgba(239,68,68,0.12); color: #fecdd3; border: 1px solid rgba(239,68,68,0.3); }
+      .badge.medium { background: rgba(245,158,11,0.12); color: #fde68a; border: 1px solid rgba(245,158,11,0.3); }
+      .badge.low { background: rgba(34,211,238,0.12); color: #a5f3fc; border: 1px solid rgba(34,211,238,0.3); }
+      .badge.status-open { background: rgba(59,130,246,0.15); color: #bfdbfe; border: 1px solid rgba(59,130,246,0.4); }
+      .badge.status-resolved { background: rgba(52,211,153,0.12); color: #d1fae5; border: 1px solid rgba(52,211,153,0.3); }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.04);
+        color: #e2e8f0;
+        text-decoration: none;
+        font-size: 13px;
+      }
+      .btn:hover { border-color: rgba(34,211,238,0.5); color: #22d3ee; }
+      .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+      @media (max-width: 960px) { .grid-2 { grid-template-columns: 1fr; } header { flex-direction: column; align-items: flex-start; gap: 8px; } }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@8.0.4/dist/turbo.es2017-umd.js" data-turbo-track="reload"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Security Event &amp; Detection Demo</h1>
+      <div class="muted">Hotwire-powered UI · Rails 8 API backend</div>
+    </header>
+    <main class="container">
+      <%= yield %>
+    </main>
+  </body>
+</html>

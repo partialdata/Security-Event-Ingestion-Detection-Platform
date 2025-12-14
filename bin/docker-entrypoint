@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+# If running Rails commands that need the DB, prepare it first
+if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
+  ./bin/rails db:prepare
+elif [ "${1}" == "bundle" ] && [ "${2}" == "exec" ] && [ "${3}" == "sidekiq" ]; then
+  ./bin/rails db:prepare
+fi
+
+exec "${@}"
