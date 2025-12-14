@@ -1,5 +1,5 @@
 # Security Event Ingestion & Detection Platform (Rails API)
-Containerized Rails API that ingests security telemetry, analyzes it asynchronously with rule-based detections, and emits alerts. Everything runs via Docker Compose (Rails API, Sidekiq, Postgres, Redis).
+Containerized Rails 8 API that ingests security telemetry, authenticates agents via JWT, and analyzes events asynchronously with rule-based detections (encoded PowerShell, LOLBins, auth abuse, abnormal process ancestry). Sidekiq + Redis handle analysis and deduplication, Postgres stores events/alerts, and a minimal Hotwire/Turbo UI shows open alerts and recent events with inline resolve/reopen. Everything runs via Docker Compose (web, worker, db, redis), and a one-command smoke test seeds an agent/JWT, posts a test event, and verifies alerts end-to-end.
 
 ## Quickstart (Docker)
 
