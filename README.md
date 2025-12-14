@@ -24,6 +24,14 @@ Containerized Rails API that ingests security telemetry, analyzes it asynchronou
    ./scripts/dev-down.sh --volumes   # stop and wipe data
    ```
 
+## One-command smoke test
+- Run `./scripts/demo-smoke.sh` to:
+  - start containers, run migrations
+  - mint an agent + JWT
+  - send a test PowerShell event
+  - show counts and URLs
+- After it completes, open `http://localhost:3000` or `/ui/alerts` to see the alert.
+
 ## Minimal Hotwire UI (demo)
 - Open `http://localhost:3000` to view the dashboard (alerts list, recent events).
 - Inline resolve/re-open uses Turbo frames; no JS build step (Turbo loaded via CDN).
